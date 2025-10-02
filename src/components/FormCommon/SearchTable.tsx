@@ -6,7 +6,7 @@ interface TableColumn {
 
 interface SearchTableProps {
   columns: TableColumn[];
-  data: Record<string, any>[];
+  data: Record<string, unknown>[];
   searchPlaceholder?: string;
   onSearch?: (query: string) => void;
 }
@@ -30,7 +30,7 @@ export default function SearchTable({ columns, data }: SearchTableProps) {
               <tr key={index}>
                 {columns.map((column) => (
                   <td key={column.key} className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    {row[column.key]}
+                    {String(row[column.key] ?? "")}
                   </td>
                 ))}
               </tr>
